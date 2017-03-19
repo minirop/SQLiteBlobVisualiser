@@ -4,7 +4,7 @@ A SQLite viewer that can have plugins to visualise specific data in BLOB fields.
 
 ## Plugins
 
-The plugins inherit from [BlobInterface](browser/include/blobinterface.h) that has several pure virtual methods.
+The plugins inherit from [BlobInterface](application/include/blobinterface.h) that has several pure virtual methods.
 
 * name: the name used in [plugins.ini](bin/plugins.ini) (see below)
 * supportedTypes: List of types that plugin can process
