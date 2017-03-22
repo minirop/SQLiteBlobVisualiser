@@ -5,14 +5,14 @@
 #include "blobinterface.h"
 #include <QVector>
 
-class BASE64SHARED_EXPORT Pixmap : public QObject, public BlobInterface
+class BASE64SHARED_EXPORT Base64 : public QObject, public BlobInterface
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "com.various-tools.sqlitebrowser")
     Q_INTERFACES(BlobInterface)
 
 public:
-    Pixmap();
+    Base64();
 
     QString name() const;
     QVector<QVariant::Type> supportedTypes() const;

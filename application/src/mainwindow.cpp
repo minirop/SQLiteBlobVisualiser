@@ -29,7 +29,6 @@ MainWindow::MainWindow()
 
     rowsView = new QTableView(this);
     connect(rowsView, &QTableView::doubleClicked, this, &MainWindow::onCellDoubleClicked);
-    rowsView->setModel(&queryModel);
     layout->addWidget(rowsView, 1);
 
     setCentralWidget(widget);
@@ -94,7 +93,7 @@ void MainWindow::load(QString filename)
         }
 
         tablesModel.setStringList(db.tables());
-        queryModel.clear();
+        rowsView->setModel(nullptr);
     }
     else
     {
@@ -113,10 +112,10 @@ void MainWindow::onOpenDatabase()
 
 void MainWindow::onTableClicked(const QModelIndex &index)
 {
-    queryModel.clear();
     QString table = tablesModel.data(index, Qt::DisplayRole).toString();
     QString queryString = QString("SELECT * FROM %1").arg(table);
     queryModel.setQuery(queryString);
+    rowsView->setModel(&queryModel);
 }
 
 void MainWindow::onCellDoubleClicked(const QModelIndex &index)
